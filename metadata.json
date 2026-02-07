@@ -1,0 +1,5 @@
+{
+  "name": "Scholarly: AI LaTeX Editor",
+  "description": "An intelligent academic writing environment inspired by Overleaf. Features real-time AI content enhancement, text-to-LaTeX conversion, and live document previewing.",
+  "requestFramePermissions": []
+}
