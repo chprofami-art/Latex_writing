@@ -1,7 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
 import { SYSTEM_INSTRUCTION_REWRITE, SYSTEM_INSTRUCTION_CONVERT, SYSTEM_INSTRUCTION_EDIT } from '../constants';
 
-const apiKey = process.env.API_KEY || '';
+const apiKey =
+  import.meta.env.VITE_GEMINI_API_KEY ||
+  import.meta.env.VITE_API_KEY ||
+  process.env.GEMINI_API_KEY ||
+  '';
 const ai = new GoogleGenAI({ apiKey });
 
 // Use a fast model for text manipulation

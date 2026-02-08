@@ -51,7 +51,7 @@ const LivePreview: React.FC<LivePreviewProps> = ({ elements, rawLatex }) => {
                 background-color: white !important;
             }
             /* Hide Sidebar, Header, Editor */
-            header, nav, aside, .overflow-hidden {
+            header, nav, aside, .print-hidden {
                 display: none !important;
                 overflow: visible !important;
                 height: auto !important;

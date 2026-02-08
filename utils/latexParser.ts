@@ -8,6 +8,7 @@ export const parseLatexToElements = (latex: string): ParsedElement[] => {
   const lines = latex.split('\n');
   const elements: ParsedElement[] = [];
   let currentParagraph = '';
+  let paragraphIndex = 0;
   
   // State for block parsing
   let inMathBlock = false;
@@ -16,12 +17,13 @@ export const parseLatexToElements = (latex: string): ParsedElement[] => {
   const flushParagraph = () => {
     if (currentParagraph.trim()) {
       elements.push({
-        id: Math.random().toString(36).substr(2, 9),
+        id: `para-${paragraphIndex}-${elements.length}`,
         type: 'paragraph',
         content: currentParagraph.trim(),
         raw: currentParagraph
       });
       currentParagraph = '';
+      paragraphIndex += 1;
     }
   };
 

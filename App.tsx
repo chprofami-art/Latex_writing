@@ -6,7 +6,7 @@ import { INITIAL_LATEX } from './constants';
 import { AIStatus, SelectionRange, ParsedElement } from './types';
 import { rewriteContent, convertToLatex, editContent } from './services/geminiService';
 import { parseLatexToElements } from './utils/latexParser';
-import { Layout, Maximize2, Minimize2, FileCode, Eye, Play, Download, Loader2 } from 'lucide-react';
+import { Layout, Maximize2, Minimize2, FileCode, Eye, Play, Download } from 'lucide-react';
 
 const App: React.FC = () => {
   const [latexCode, setLatexCode] = useState(INITIAL_LATEX);
@@ -85,7 +85,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-100 overflow-hidden">
       {/* Header */}
-      <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-4 shrink-0 z-20">
+      <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-4 shrink-0 z-20 print-hidden">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-serif font-bold">
             S
@@ -126,7 +126,7 @@ const App: React.FC = () => {
       {/* Main Workspace */}
       <div className="flex flex-1 overflow-hidden">
         {/* Editor Pane */}
-        <div className={`flex flex-col transition-all duration-300 ${previewCollapsed ? 'flex-1' : 'w-1/2'} border-r border-gray-200 relative`}>
+        <div className={`flex flex-col transition-all duration-300 ${previewCollapsed ? 'flex-1' : 'w-1/2'} border-r border-gray-200 relative print-hidden`}>
              <div className="h-10 bg-gray-50 border-b border-gray-200 flex items-center justify-between px-4">
                  <div className="flex items-center gap-2 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                      <FileCode size={14} className="text-brand-600"/>
@@ -175,6 +175,7 @@ const App: React.FC = () => {
                 aiStatus={aiStatus}
                 mode={mode}
                 setMode={() => {}} // Mode setting not strictly needed for sidebar now
+                className="print-hidden"
             />
         )}
       </div>

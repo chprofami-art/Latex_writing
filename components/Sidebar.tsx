@@ -9,9 +9,18 @@ interface SidebarProps {
   onSmartEdit: (instruction: string) => void;
   aiStatus: AIStatus;
   mode: 'RAW' | 'LATEX';
+  className?: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ selection, onRewrite, onConvert, onSmartEdit, aiStatus, mode }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  selection,
+  onRewrite,
+  onConvert,
+  onSmartEdit,
+  aiStatus,
+  mode,
+  className
+}) => {
   const [instruction, setInstruction] = useState('');
   const hasSelection = selection && selection.text.length > 0;
 
@@ -22,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selection, onRewrite, onConvert, onSm
   };
 
   return (
-    <div className="w-80 bg-white border-l border-gray-200 flex flex-col h-full shadow-xl z-10">
+    <div className={`w-80 bg-white border-l border-gray-200 flex flex-col h-full shadow-xl z-10 ${className ?? ''}`}>
       <div className="p-6 border-b border-gray-100 bg-gray-50">
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">AI Assistant</h2>
         
